@@ -9,7 +9,12 @@ class shoppage extends StatelessWidget {
     return Scaffold(
       appBar: buildAppBar(),
       body: Column(
-        children: <Widget>[Padding(), Container()],
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(0),
+          ),
+          Container()
+        ],
       ),
     );
   }
