@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:software2_project/signinpage.dart';
+import 'package:software2_project/singuppage.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -68,12 +69,15 @@ class Homepage extends StatelessWidget {
               minWidth: 300.0,
               height: 60.0,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Signuppage()));
+                },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadiusDirectional.circular(10)),
                 color: Colors.grey[700],
                 child: Text(
-                  'SIGNUP',
+                  'SIGN UP',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     color: Colors.grey[50],
