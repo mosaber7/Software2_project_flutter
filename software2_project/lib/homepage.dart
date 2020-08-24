@@ -28,6 +28,9 @@ class Homepage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            SizedBox(
+              height: 50,
+            ),
             Center(
               child: CircleAvatar(
                 radius: 100,
@@ -36,7 +39,7 @@ class Homepage extends StatelessWidget {
               ),
             ),
             SizedBox(
-              height: 50,
+              height: 80,
             ),
             Container(
               width: 300,
@@ -64,6 +67,7 @@ class Homepage extends StatelessWidget {
             SizedBox(
               height: 50,
             ),
+
             //its like the container widget but for buttons
             ButtonTheme(
               minWidth: 300.0,
