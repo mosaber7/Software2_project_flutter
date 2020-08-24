@@ -13,7 +13,6 @@ class shoppage extends StatelessWidget {
           Padding(
             padding: EdgeInsets.all(0),
           ),
-          Container()
         ],
       ),
     );
