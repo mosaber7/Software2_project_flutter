@@ -1,11 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:software2_project/shoppage.dart';
+import 'package:software2_project/singuppage.dart';
 
-class Loginscreen2 extends StatelessWidget {
+class Loginscreen extends StatefulWidget {
+  @override
+  _LoginscreenState createState() => _LoginscreenState();
+}
+
+class _LoginscreenState extends State<Loginscreen> {
+  final myController = TextEditingController();
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.grey[700],
+        backgroundColor: Colors.redAccent[200],
         title: Text(
           'SIGNIN',
           style: TextStyle(
@@ -27,7 +42,7 @@ class Loginscreen2 extends StatelessWidget {
                 'WELECOME TO BUY KHANA!',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Colors.grey[570],
+                  color: Colors.redAccent[200],
                   fontSize: 25,
                 ),
               ),
@@ -38,8 +53,9 @@ class Loginscreen2 extends StatelessWidget {
             Container(
               margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
               child: TextField(
+                controller: myController,
                 decoration: InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'EMAIL'),
+                    border: OutlineInputBorder(), hintText: 'username'),
               ),
             ),
             SizedBox(
@@ -60,14 +76,19 @@ class Loginscreen2 extends StatelessWidget {
               width: 330,
               height: 60,
               child: RaisedButton(
-                onPressed: () {},
+                onPressed: () {
+                  //bot working*******
+
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => shoppage()));
+                },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),
                 child: Text(
                   'SIGN IN',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    color: Colors.grey[250],
+                    color: Colors.redAccent[200],
                     fontSize: 20,
                   ),
                 ),
