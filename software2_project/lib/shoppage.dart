@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
@@ -8,12 +6,51 @@ class shoppage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: buildAppBar(),
-      body: Column(
-        children: <Widget>[
-          Padding(
-            padding: EdgeInsets.all(0),
-          ),
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+              padding: EdgeInsets.all(0),
+            ),
+            Container(
+              height: 180,
+              width: 140,
+              child: Image.asset(
+                'assets/pexels-bùi-huy-1750045.jpg',
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.pink[200],
+                  borderRadius: BorderRadius.circular(16)),
+            ),
+            Text("sneeker"),
+            Text('\$222'),
+            Container(
+              height: 180,
+              width: 140,
+              child: Image.asset(
+                'assets/pexels-melvin-buezo-2529148.jpg',
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.pink[200],
+                  borderRadius: BorderRadius.circular(16)),
+            ),
+            Text("sneeker"),
+            Text('\$222'),
+            Container(
+              height: 180,
+              width: 140,
+              child: Image.asset(
+                'assets/pexels-jordan-hyde-1032110.jpg',
+              ),
+              decoration: BoxDecoration(
+                  color: Colors.pink[200],
+                  borderRadius: BorderRadius.circular(16)),
+            ),
+            Text("sneeker"),
+            Text('\$222'),
+          ],
+        ),
       ),
     );
   }
