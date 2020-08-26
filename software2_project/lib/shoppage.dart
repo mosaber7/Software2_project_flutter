@@ -1,12 +1,17 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:software2_project/cartpage.dart';
 import 'package:software2_project/homepage.dart';
 
-class shoppage extends StatelessWidget {
+class shoppage extends StatefulWidget {
+  @override
+  _shoppageState createState() => _shoppageState();
+}
+
+class _shoppageState extends State<shoppage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(),
+      appBar: buildAppBar(context),
       body: GridView.count(
           crossAxisCount: 2,
           childAspectRatio: 0.75,
@@ -18,6 +23,7 @@ class shoppage extends StatelessWidget {
   }
 }
 
+List<Column> items;
 List<Column> products = [
   Column(
     mainAxisAlignment: MainAxisAlignment.center,
@@ -38,7 +44,9 @@ List<Column> products = [
         minWidth: 150.0,
         height: 40.0,
         child: RaisedButton(
-          onPressed: () {},
+          onPressed: () {
+            items.add(products[0]);
+          },
           shape: RoundedRectangleBorder(
               borderRadius: BorderRadiusDirectional.circular(10)),
           color: Colors.grey[100],
@@ -219,12 +227,17 @@ List<Column> products = [
   ),
 ];
 
-AppBar buildAppBar() {
+AppBar buildAppBar(BuildContext context) {
   return AppBar(
     automaticallyImplyLeading: false,
     actions: <Widget>[
       //cart button
-      IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
+      IconButton(
+          icon: Icon(Icons.shopping_cart),
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => cartpage(items)));
+          }),
       //searching button
       IconButton(icon: Icon(Icons.search), onPressed: () {}),
       IconButton(
