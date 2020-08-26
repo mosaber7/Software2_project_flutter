@@ -10,6 +10,7 @@ class signinpage extends StatefulWidget {
 class _signinpageState extends State<signinpage> {
   final myController1 = TextEditingController();
   final myController2 = TextEditingController();
+  String p = '';
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
@@ -84,9 +85,15 @@ class _signinpageState extends State<signinpage> {
                   setState(() {
                     if (myController1.text == '1234' &&
                         myController2.text == '1234') {
+                      p = '';
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => shoppage()));
-                    } else {}
+                    } else if (myController1.text.isEmpty ||
+                        myController2.text.isEmpty) {
+                      p = 'please complete all the fields';
+                    } else {
+                      p = 'Wrong username or password!';
+                    }
                   });
                 },
                 shape: RoundedRectangleBorder(
@@ -101,6 +108,16 @@ class _signinpageState extends State<signinpage> {
                 ),
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
+            Text(
+              p,
+              style: TextStyle(
+                color: Colors.redAccent[200],
+                fontSize: 12,
+              ),
+            )
           ],
         ),
       ),
