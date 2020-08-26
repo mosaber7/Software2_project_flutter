@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:software2_project/shoppage.dart';
 import 'package:software2_project/singuppage.dart';
 
-class Loginscreen extends StatefulWidget {
+class signinpage extends StatefulWidget {
   @override
-  _LoginscreenState createState() => _LoginscreenState();
+  _signinpageState createState() => _signinpageState();
 }
 
-class _LoginscreenState extends State<Loginscreen> {
-  final myController = TextEditingController();
+class _signinpageState extends State<signinpage> {
+  final myController1 = TextEditingController();
+  final myController2 = TextEditingController();
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    myController.dispose();
+    myController1.dispose();
+    myController2.dispose();
     super.dispose();
   }
 
@@ -53,7 +55,7 @@ class _LoginscreenState extends State<Loginscreen> {
             Container(
               margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
               child: TextField(
-                controller: myController,
+                controller: myController1,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), hintText: 'username'),
               ),
@@ -64,6 +66,7 @@ class _LoginscreenState extends State<Loginscreen> {
             Container(
               margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
               child: TextField(
+                controller: myController2,
                 obscureText: true,
                 decoration: InputDecoration(
                     border: OutlineInputBorder(), hintText: 'password'),
@@ -78,9 +81,13 @@ class _LoginscreenState extends State<Loginscreen> {
               child: RaisedButton(
                 onPressed: () {
                   //bot working*******
-
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => shoppage()));
+                  setState(() {
+                    if (myController1.text == '1234' &&
+                        myController2.text == '1234') {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => shoppage()));
+                    } else {}
+                  });
                 },
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(10)),

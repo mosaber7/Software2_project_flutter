@@ -58,6 +58,7 @@ class shoppage extends StatelessWidget {
 
 AppBar buildAppBar() {
   return AppBar(
+    automaticallyImplyLeading: false,
     actions: <Widget>[
       //cart button
       IconButton(icon: Icon(Icons.shopping_cart), onPressed: () {}),
