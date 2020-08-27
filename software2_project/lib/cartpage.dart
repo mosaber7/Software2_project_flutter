@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class cartpage extends StatelessWidget {
+class Cartpage extends StatelessWidget {
   List<Column> items;
-  cartpage(List items) {
+  Cartpage(List items) {
     this.items = items;
   }
   @override

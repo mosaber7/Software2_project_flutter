@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:software2_project/shoppage.dart';
 import 'package:software2_project/singuppage.dart';
 
-class signinpage extends StatefulWidget {
+class Signinpage extends StatefulWidget {
   @override
-  _signinpageState createState() => _signinpageState();
+  _SigninpageState createState() => _SigninpageState();
 }
 
-class _signinpageState extends State<signinpage> {
+class _SigninpageState extends State<Signinpage> {
   final myController1 = TextEditingController();
   final myController2 = TextEditingController();
   String p = '';
@@ -87,7 +87,7 @@ class _signinpageState extends State<signinpage> {
                         myController2.text == '1234') {
                       p = '';
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => shoppage()));
+                          MaterialPageRoute(builder: (context) => Shoppage()));
                     } else if (myController1.text.isEmpty ||
                         myController2.text.isEmpty) {
                       p = 'please complete all the fields';
