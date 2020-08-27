@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:software2_project/cartpage.dart';
 import 'package:software2_project/homepage.dart';
-import 'package:software2_project/productcard.dart';
+import 'package:software2_project/product.dart';
 
 class Shoppage extends StatefulWidget {
   @override
@@ -9,50 +9,77 @@ class Shoppage extends StatefulWidget {
 }
 
 class _ShoppageState extends State<Shoppage> {
-  int number_of_items = 6;
-  Productcard productcard = new Productcard();
+  List<Product> myproducts;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildAppBar(context),
-      body: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 0.75,
-          children: List.generate(100, (index) {
-            return Column(
-              children: [
-                productcard.getproduct(index % number_of_items),
-                ButtonTheme(
-                  minWidth: 150.0,
-                  height: 40.0,
-                  child: RaisedButton(
-                    onPressed: () {
-                      productcard.addtomycart(index);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Cartpage()));
-                    },
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadiusDirectional.circular(10)),
-                    color: Colors.grey[100],
-                    child: Text(
-                      'Add to cart',
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        color: Colors.redAccent[200],
-                        fontSize: 15,
-                      ),
-                    ),
-                  ),
+        appBar: buildAppBar(context),
+        body: Column(
+          children: [
+            SizedBox(
+              height: 15,
+            ),
+            Expanded(
+              child: GridView.builder(
+                itemCount: products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 2, childAspectRatio: 0.75),
+                itemBuilder: (context, index) => ItemScreen(
+                  p: products[index],
+                  onpress: () {
+                    myproducts.add(products[index]);
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Cartpage(index)));
+                  },
                 ),
-              ],
-            );
-          })),
-      backgroundColor: Colors.blue[50],
-    );
+              ),
+            ),
+          ],
+        ));
   }
 }
 
-List<Column> items;
+class ItemScreen extends StatelessWidget {
+  final Product p;
+  final Function onpress;
+  const ItemScreen({Key key, this.p, this.onpress}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onpress,
+      child: Column(
+        children: <Widget>[
+          Container(
+            padding: EdgeInsets.all(20),
+            height: 180,
+            width: 160,
+            decoration: BoxDecoration(
+                color: p.color, borderRadius: BorderRadius.circular(15)),
+            child: Image.asset(p.image),
+          ),
+          Text(
+            products[0].title,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.redAccent[200],
+              fontSize: 15,
+            ),
+          ),
+          Text(
+            "\$" + p.price.toString(),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.redAccent[200],
+              fontSize: 15,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 AppBar buildAppBar(BuildContext context) {
   return AppBar(
