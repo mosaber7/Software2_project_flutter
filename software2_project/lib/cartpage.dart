@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:software2_project/productcard.dart';
 
-class Cartpage extends StatelessWidget {
-  List<Column> items;
-  Cartpage(List items) {
-    this.items = items;
-  }
+class Cartpage extends StatefulWidget {
+  @override
+  _CartpageState createState() => _CartpageState();
+}
+
+class _CartpageState extends State<Cartpage> {
+  Productcard productcard = new Productcard();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,12 +23,7 @@ class Cartpage extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: GridView.count(
-          crossAxisCount: 2,
-          childAspectRatio: 0.75,
-          children: List.generate(items.length, (index) {
-            return items[index];
-          })),
+      body: Column(children: [Text('hello'), productcard.getitem()]),
       backgroundColor: Colors.blue[50],
     );
   }

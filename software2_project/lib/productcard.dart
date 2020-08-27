@@ -2,6 +2,18 @@ import 'package:flutter/material.dart';
 
 class Productcard {
   Productcard() {}
+  static Column myitem;
+  void addtomycart(int i) {
+    myitem = product[i];
+  }
+
+  Column getitem() {
+    return myitem;
+  }
+
+  Column getproduct(int index) {
+    return product[index];
+  }
 
   List<Column> product = [
     Column(
@@ -19,26 +31,6 @@ class Productcard {
               color: Colors.blue[600], borderRadius: BorderRadius.circular(16)),
         ),
         Text('\$282'),
-        ButtonTheme(
-          minWidth: 150.0,
-          height: 40.0,
-          child: RaisedButton(
-            onPressed: () {
-              //  items.add(products[0]);
-            },
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.circular(10)),
-            color: Colors.grey[100],
-            child: Text(
-              'Add to cart',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent[200],
-                fontSize: 15,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
     Column(
@@ -57,24 +49,6 @@ class Productcard {
               borderRadius: BorderRadius.circular(16)),
         ),
         Text('\$212'),
-        ButtonTheme(
-          minWidth: 150.0,
-          height: 40.0,
-          child: RaisedButton(
-            onPressed: () {},
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.circular(10)),
-            color: Colors.grey[100],
-            child: Text(
-              'Add to cart',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent[200],
-                fontSize: 15,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
     Column(
@@ -89,24 +63,6 @@ class Productcard {
               color: Colors.grey[600], borderRadius: BorderRadius.circular(16)),
         ),
         Text('\$422'),
-        ButtonTheme(
-          minWidth: 150.0,
-          height: 40.0,
-          child: RaisedButton(
-            onPressed: () {},
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.circular(10)),
-            color: Colors.grey[100],
-            child: Text(
-              'Add to cart',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent[200],
-                fontSize: 15,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
     Column(
@@ -122,24 +78,6 @@ class Productcard {
               borderRadius: BorderRadius.circular(16)),
         ),
         Text('\$622'),
-        ButtonTheme(
-          minWidth: 150.0,
-          height: 40.0,
-          child: RaisedButton(
-            onPressed: () {},
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.circular(10)),
-            color: Colors.grey[100],
-            child: Text(
-              'Add to cart',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent[200],
-                fontSize: 15,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
     Column(
@@ -154,24 +92,6 @@ class Productcard {
               color: Colors.red[500], borderRadius: BorderRadius.circular(16)),
         ),
         Text('\$262'),
-        ButtonTheme(
-          minWidth: 150.0,
-          height: 40.0,
-          child: RaisedButton(
-            onPressed: () {},
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.circular(10)),
-            color: Colors.grey[100],
-            child: Text(
-              'Add to cart',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent[200],
-                fontSize: 15,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
     Column(
@@ -186,24 +106,6 @@ class Productcard {
               color: Colors.grey[700], borderRadius: BorderRadius.circular(16)),
         ),
         Text('\$722'),
-        ButtonTheme(
-          minWidth: 150.0,
-          height: 40.0,
-          child: RaisedButton(
-            onPressed: () {},
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadiusDirectional.circular(10)),
-            color: Colors.grey[100],
-            child: Text(
-              'Add to cart',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                color: Colors.redAccent[200],
-                fontSize: 15,
-              ),
-            ),
-          ),
-        ),
       ],
     ),
   ];

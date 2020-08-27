@@ -9,6 +9,7 @@ class Shoppage extends StatefulWidget {
 }
 
 class _ShoppageState extends State<Shoppage> {
+  int number_of_items = 6;
   Productcard productcard = new Productcard();
   @override
   Widget build(BuildContext context) {
@@ -18,7 +19,33 @@ class _ShoppageState extends State<Shoppage> {
           crossAxisCount: 2,
           childAspectRatio: 0.75,
           children: List.generate(100, (index) {
-            return productcard.product[index % 6];
+            return Column(
+              children: [
+                productcard.getproduct(index % number_of_items),
+                ButtonTheme(
+                  minWidth: 150.0,
+                  height: 40.0,
+                  child: RaisedButton(
+                    onPressed: () {
+                      productcard.addtomycart(index);
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Cartpage()));
+                    },
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusDirectional.circular(10)),
+                    color: Colors.grey[100],
+                    child: Text(
+                      'Add to cart',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.redAccent[200],
+                        fontSize: 15,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            );
           })),
       backgroundColor: Colors.blue[50],
     );
@@ -35,8 +62,8 @@ AppBar buildAppBar(BuildContext context) {
       IconButton(
           icon: Icon(Icons.shopping_cart),
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Cartpage(items)));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => Cartpage()));
           }),
       //searching button
       IconButton(icon: Icon(Icons.search), onPressed: () {}),
