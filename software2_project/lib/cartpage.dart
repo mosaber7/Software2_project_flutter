@@ -37,13 +37,10 @@ class Build_CartPage_body extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _Build_CartPage_bodyState createState() =>
-      _Build_CartPage_bodyState(myprducts);
+  _Build_CartPage_bodyState createState() => _Build_CartPage_bodyState();
 }
 
 class _Build_CartPage_bodyState extends State<Build_CartPage_body> {
-  List<Product> myprducts;
-  _Build_CartPage_bodyState({this.myprducts});
   @override
   Widget build(BuildContext context) {
     if (widget.myprducts.isEmpty) {
@@ -72,7 +69,7 @@ class _Build_CartPage_bodyState extends State<Build_CartPage_body> {
                 p: widget.myprducts[index],
                 onpress: () {
                   setState(() {
-                    myprducts.removeAt(index);
+                    widget.myprducts.removeAt(index);
                   });
                 },
               ),
