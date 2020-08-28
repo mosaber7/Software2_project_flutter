@@ -67,7 +67,7 @@ AppBar buildAppBar(BuildContext context, List<Product> myproducts) {
       IconButton(
           icon: Icon(Icons.search),
           onPressed: () {
-            showSearch(context: context, delegate: Search());
+            showSearch(context: context, delegate: Search(products));
           }),
       IconButton(
           icon: Icon(Icons.home),
@@ -89,6 +89,7 @@ AppBar buildAppBar(BuildContext context, List<Product> myproducts) {
 }
 
 class Search extends SearchDelegate {
+  Search(this.list);
   @override
   List<Widget> buildActions(BuildContext context) {
     return <Widget>[
@@ -117,8 +118,32 @@ class Search extends SearchDelegate {
     );
   }
 
+  String selectedResult = "";
+  final List<Product> list;
+  List<Product> recentList = [products[0], products[1]];
   @override
   Widget buildSuggestions(BuildContext context) {
-    throw UnimplementedError();
+    List<Product> suggestionList = [];
+    query.isEmpty
+        ? suggestionList = recentList //In the true case
+        : suggestionList.addAll(list.where(
+            // In the false case
+            (element) => element.title.contains(query),
+          ));
+    return ListView.builder(
+      itemCount: suggestionList.length,
+      itemBuilder: (context, index) {
+        return ListTile(
+          title: Text(
+            suggestionList[index].title,
+          ),
+          leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
+          onTap: () {
+            selectedResult = suggestionList[index].title;
+            showResults(context);
+          },
+        );
+      },
+    );
   }
 }
