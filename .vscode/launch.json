@@ -6,7 +6,7 @@
     "configurations": [
         {
             "name": "Dart",
-            "program": "software2_project/lib/homepage.dart",
+            "program": "software2_project/lib/main.dart",
             "request": "launch",
             "type": "dart"
         }

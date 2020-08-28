@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:software2_project/signinpage.dart';
 import 'package:software2_project/singuppage.dart';
 
-void main() {
-  runApp(MaterialApp(
-    home: Homepage(),
-  ));
-}
-
 class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
