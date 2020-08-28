@@ -43,42 +43,50 @@ class Build_CartPage_body extends StatefulWidget {
 class _Build_CartPage_bodyState extends State<Build_CartPage_body> {
   @override
   Widget build(BuildContext context) {
-    if (widget.myprducts.isEmpty) {
-      return Column(
-        children: <Widget>[
-          Text('you have not added anything yet!',
+    return Column(
+      children: [
+        SizedBox(
+          height: 15,
+        ),
+        Expanded(
+          child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, childAspectRatio: 0.75),
+            itemCount: widget.myprducts.length,
+            itemBuilder: (context, index) => ItemScreen(
+              p: widget.myprducts[index],
+              onpress: () {
+                setState(() {
+                  widget.myprducts.removeAt(index);
+                });
+              },
+            ),
+          ),
+        ),
+        Container(
+          width: 330,
+          padding: EdgeInsets.fromLTRB(15, 0, 15, 15),
+          child: RaisedButton(
+            onPressed: () {
+              //bot working*******
+              setState(() {
+                widget.myprducts.clear();
+              });
+            },
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            child: Text(
+              'Purchase all    ' + '\$' + getprice(widget.myprducts).toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
-                color: Colors.grey[50],
+                color: Colors.redAccent[200],
                 fontSize: 20,
-              ))
-        ],
-      );
-    } else {
-      return Column(
-        children: [
-          SizedBox(
-            height: 15,
-          ),
-          Expanded(
-            child: GridView.builder(
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2, childAspectRatio: 0.75),
-              itemCount: widget.myprducts.length,
-              itemBuilder: (context, index) => ItemScreen(
-                p: widget.myprducts[index],
-                onpress: () {
-                  setState(() {
-                    widget.myprducts.removeAt(index);
-                  });
-                },
               ),
             ),
           ),
-          Text(getprice(widget.myprducts).toString())
-        ],
-      );
-    }
+        ),
+      ],
+    );
   }
 
   int getprice(List<Product> l) {

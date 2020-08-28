@@ -45,14 +45,14 @@ List<Product> products = [
       color: Color(0xFFE6B398)),
   Product(
       id: 5,
-      title: "Office Code",
+      title: "red valvet",
       price: 234,
       size: 12,
       image: "assets/bag_5.png",
       color: Color(0xFFFB7883)),
   Product(
     id: 6,
-    title: "Office Code",
+    title: "laptop",
     price: 234,
     size: 12,
     image: "assets/bag_6.png",

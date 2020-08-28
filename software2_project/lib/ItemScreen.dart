@@ -20,7 +20,7 @@ class ItemScreen extends StatelessWidget {
             child: Image.asset(p.image),
           ),
           Text(
-            products[0].title,
+            p.title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.redAccent[200],

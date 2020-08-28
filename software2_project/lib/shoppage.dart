@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:software2_project/ItemScreen.dart';
 import 'package:software2_project/cartpage.dart';
 import 'package:software2_project/homepage.dart';
@@ -14,6 +15,9 @@ class Shoppage extends StatefulWidget {
 }
 
 class _ShoppageState extends State<Shoppage> {
+  TextEditingController _searchQueryController = TextEditingController();
+  bool _isSearching = false;
+  String searchQuery = "Search query";
   List<Product> myproducts = [];
   void addItemToList(int index) {
     setState(() {
@@ -60,7 +64,11 @@ AppBar buildAppBar(BuildContext context, List<Product> myproducts) {
                 MaterialPageRoute(builder: (context) => Cartpage(myproducts)));
           }),
       //searching button
-      IconButton(icon: Icon(Icons.search), onPressed: () {}),
+      IconButton(
+          icon: Icon(Icons.search),
+          onPressed: () {
+            showSearch(context: context, delegate: Search());
+          }),
       IconButton(
           icon: Icon(Icons.home),
           onPressed: () {
@@ -78,4 +86,39 @@ AppBar buildAppBar(BuildContext context, List<Product> myproducts) {
     ),
     centerTitle: true,
   );
+}
+
+class Search extends SearchDelegate {
+  @override
+  List<Widget> buildActions(BuildContext context) {
+    return <Widget>[
+      IconButton(
+          icon: Icon(Icons.close),
+          onPressed: () {
+            query = "";
+          })
+    ];
+  }
+
+  @override
+  Widget buildResults(BuildContext context) {
+    return Container(
+      child: Text("Nigaaaa"),
+    );
+  }
+
+  @override
+  Widget buildLeading(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.arrow_back),
+      onPressed: () {
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  @override
+  Widget buildSuggestions(BuildContext context) {
+    throw UnimplementedError();
+  }
 }
