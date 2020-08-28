@@ -14,7 +14,7 @@ class Cartpage extends StatelessWidget {
             'my cart',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              color: Colors.grey[50],
+              color: Colors.grey[70],
               fontSize: 20,
             ),
           ),
