@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:software2_project/ItemScreen.dart';
 import 'package:software2_project/product.dart';
 import 'package:software2_project/shoppage.dart';
 
@@ -51,10 +52,13 @@ class Build_CartPage_body extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: p.length,
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2, childAspectRatio: 0.75),
-              itemBuilder: (context, index) => ItemScreen(p: p[index]),
+              itemCount: 1,
+              itemBuilder: (context, index) => ItemScreen(
+                p: products[i],
+                onpress: null,
+              ),
             ),
           ),
         ],
