@@ -103,9 +103,8 @@ class Search extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Container(
-      child: Text("Nigaaaa"),
-    );
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => Cartpage(search_list)));
   }
 
   @override
@@ -118,7 +117,7 @@ class Search extends SearchDelegate {
     );
   }
 
-  String selectedResult = "";
+  List<Product> search_list = [];
   final List<Product> list;
   List<Product> recentList = [products[0], products[1]];
   @override
@@ -139,7 +138,6 @@ class Search extends SearchDelegate {
           ),
           leading: query.isEmpty ? Icon(Icons.access_time) : SizedBox(),
           onTap: () {
-            selectedResult = suggestionList[index].title;
             showResults(context);
           },
         );
