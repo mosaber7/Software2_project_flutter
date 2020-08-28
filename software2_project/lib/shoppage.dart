@@ -4,17 +4,27 @@ import 'package:software2_project/cartpage.dart';
 import 'package:software2_project/homepage.dart';
 import 'package:software2_project/product.dart';
 
+import 'product.dart';
+import 'product.dart';
+import 'product.dart';
+
 class Shoppage extends StatefulWidget {
   @override
   _ShoppageState createState() => _ShoppageState();
 }
 
 class _ShoppageState extends State<Shoppage> {
-  List<Product> myproducts;
+  List<Product> myproducts = [];
+  void addItemToList(int index) {
+    setState(() {
+      myproducts.add(products[index]);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context),
+        appBar: buildAppBar(context, myproducts),
         body: Column(
           children: [
             SizedBox(
@@ -28,10 +38,7 @@ class _ShoppageState extends State<Shoppage> {
                 itemBuilder: (context, index) => ItemScreen(
                   p: products[index],
                   onpress: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => Cartpage(index)));
+                    addItemToList(index);
                   },
                 ),
               ),
@@ -41,7 +48,7 @@ class _ShoppageState extends State<Shoppage> {
   }
 }
 
-AppBar buildAppBar(BuildContext context) {
+AppBar buildAppBar(BuildContext context, List<Product> myproducts) {
   return AppBar(
     automaticallyImplyLeading: false,
     actions: <Widget>[
@@ -49,8 +56,8 @@ AppBar buildAppBar(BuildContext context) {
       IconButton(
           icon: Icon(Icons.shopping_cart),
           onPressed: () {
-            /*Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Cartpage()));*/
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => Cartpage(myproducts)));
           }),
       //searching button
       IconButton(icon: Icon(Icons.search), onPressed: () {}),
