@@ -28,27 +28,30 @@ class _ShoppageState extends State<Shoppage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: buildAppBar(context, myproducts),
-        body: Column(
-          children: [
-            SizedBox(
-              height: 15,
+        appBar: buildAppBar(context, myproducts), body: build_ShopPage_Body());
+  }
+
+  Column build_ShopPage_Body() {
+    return Column(
+      children: [
+        SizedBox(
+          height: 15,
+        ),
+        Expanded(
+          child: GridView.builder(
+            itemCount: products.length,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2, childAspectRatio: 0.75),
+            itemBuilder: (context, index) => ItemScreen(
+              p: products[index],
+              onpress: () {
+                addItemToList(index);
+              },
             ),
-            Expanded(
-              child: GridView.builder(
-                itemCount: products.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 0.75),
-                itemBuilder: (context, index) => ItemScreen(
-                  p: products[index],
-                  onpress: () {
-                    addItemToList(index);
-                  },
-                ),
-              ),
-            ),
-          ],
-        ));
+          ),
+        ),
+      ],
+    );
   }
 }
 

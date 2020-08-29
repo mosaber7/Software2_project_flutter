@@ -11,21 +11,25 @@ class Cartpage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.redAccent[200],
-          title: Text(
-            'MYCART',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              color: Colors.grey[70],
-              fontSize: 20,
-            ),
-          ),
-          centerTitle: true,
-        ),
+        appBar: build_CartPage_AppBar(),
         body: Build_CartPage_body(
           myprducts: myprducts,
         ));
+  }
+
+  AppBar build_CartPage_AppBar() {
+    return AppBar(
+      backgroundColor: Colors.redAccent[200],
+      title: Text(
+        'MYCART',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.grey[70],
+          fontSize: 20,
+        ),
+      ),
+      centerTitle: true,
+    );
   }
 }
 
