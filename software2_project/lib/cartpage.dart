@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:software2_project/ItemScreen.dart';
+import 'package:software2_project/customer.dart';
 import 'package:software2_project/product.dart';
 import 'package:software2_project/shoppage.dart';
 
 import 'product.dart';
 
 class Cartpage extends StatelessWidget {
-  List<Product> myprducts;
-  Cartpage(this.myprducts);
+  //my card list of items
+  Customer customer;
+//constructor to get the list of items from the previous page
+  Cartpage(this.customer);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: build_CartPage_AppBar(),
         body: Build_CartPage_body(
-          myprducts: myprducts,
+          customer: customer,
         ));
   }
 
@@ -34,10 +38,10 @@ class Cartpage extends StatelessWidget {
 }
 
 class Build_CartPage_body extends StatefulWidget {
-  List<Product> myprducts;
+  Customer customer;
   Build_CartPage_body({
     Key key,
-    @required this.myprducts,
+    @required this.customer,
   }) : super(key: key);
 
   @override
@@ -56,12 +60,12 @@ class _Build_CartPage_bodyState extends State<Build_CartPage_body> {
           child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, childAspectRatio: 0.75),
-            itemCount: widget.myprducts.length,
+            itemCount: widget.customer.products_List.length,
             itemBuilder: (context, index) => ItemScreen(
-              p: widget.myprducts[index],
-              onpress: () {
+              itemscreen_product: widget.customer.products_List[index],
+              itemscreen_onpress: () {
                 setState(() {
-                  widget.myprducts.removeAt(index);
+                  widget.customer.products_List.removeAt(index);
                 });
               },
             ),
@@ -74,13 +78,15 @@ class _Build_CartPage_bodyState extends State<Build_CartPage_body> {
             onPressed: () {
               //bot working*******
               setState(() {
-                widget.myprducts.clear();
+                widget.customer.products_List.clear();
               });
             },
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             child: Text(
-              'Purchase all    ' + '\$' + getprice(widget.myprducts).toString(),
+              'Purchase all    ' +
+                  '\$' +
+                  getprice(widget.customer.products_List).toString(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.redAccent[200],

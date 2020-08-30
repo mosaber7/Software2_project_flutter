@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:software2_project/shoppage.dart';
 import 'package:software2_project/signinpage.dart';
 
 class Signuppage extends StatefulWidget {
@@ -8,17 +7,17 @@ class Signuppage extends StatefulWidget {
 }
 
 class _SignuppageState extends State<Signuppage> {
-  final emailcontorler = TextEditingController();
-  final passwordcontorler = TextEditingController();
-  final confirmcontorler = TextEditingController();
-  final gendercontorler = TextEditingController();
+  final email_contorler = TextEditingController();
+  final password_contorler = TextEditingController();
+  final confirm_contorler = TextEditingController();
+  final gender_contorler = TextEditingController();
   @override
   void dispose() {
     // Clean up the controller when the widget is disposed.
-    emailcontorler.dispose();
-    passwordcontorler.dispose();
-    confirmcontorler.dispose();
-    gendercontorler.dispose();
+    email_contorler.dispose();
+    password_contorler.dispose();
+    confirm_contorler.dispose();
+    gender_contorler.dispose();
     super.dispose();
   }
 
@@ -53,7 +52,7 @@ class _SignuppageState extends State<Signuppage> {
           Container(
             margin: EdgeInsets.fromLTRB(40, 40, 40, 0),
             child: TextField(
-              controller: emailcontorler,
+              controller: email_contorler,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), hintText: 'EMAIL'),
             ),
@@ -64,7 +63,7 @@ class _SignuppageState extends State<Signuppage> {
           Container(
             margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: TextField(
-              controller: passwordcontorler,
+              controller: password_contorler,
               obscureText: true,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), hintText: 'PASSWORD'),
@@ -76,7 +75,7 @@ class _SignuppageState extends State<Signuppage> {
           Container(
             margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: TextField(
-              controller: confirmcontorler,
+              controller: confirm_contorler,
               obscureText: true,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), hintText: 'CONFIRM PASSWORD'),
@@ -88,7 +87,7 @@ class _SignuppageState extends State<Signuppage> {
           Container(
             margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: TextField(
-              controller: gendercontorler,
+              controller: gender_contorler,
               decoration: InputDecoration(
                   border: OutlineInputBorder(),
                   hintText: 'GENDER: Male / Female'),
@@ -104,10 +103,10 @@ class _SignuppageState extends State<Signuppage> {
               onPressed: () {
                 //bot working*******
                 setState(() {
-                  if (emailcontorler.text.isNotEmpty &&
-                      passwordcontorler.text.isNotEmpty &&
-                      gendercontorler.text.isNotEmpty &&
-                      confirmcontorler.text == passwordcontorler.text) {
+                  if (email_contorler.text.isNotEmpty &&
+                      password_contorler.text.isNotEmpty &&
+                      gender_contorler.text.isNotEmpty &&
+                      confirm_contorler.text == password_contorler.text) {
                     Navigator.push(context,
                         MaterialPageRoute(builder: (context) => Signinpage()));
                   } else {}

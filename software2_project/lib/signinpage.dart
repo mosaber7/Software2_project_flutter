@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:software2_project/customer.dart';
+import 'package:software2_project/product.dart';
 import 'package:software2_project/shoppage.dart';
-import 'package:software2_project/singuppage.dart';
 
 class Signinpage extends StatefulWidget {
   @override
@@ -8,14 +9,21 @@ class Signinpage extends StatefulWidget {
 }
 
 class _SigninpageState extends State<Signinpage> {
-  final myController1 = TextEditingController();
-  final myController2 = TextEditingController();
-  String p = '';
+  //listeners to listen to the input of the name and password text fields
+  final username_controller = TextEditingController();
+  final password_controller = TextEditingController();
+  String username, password;
+  List<Product> myproducts;
+  Customer customer;
+
+  //string to display it in case the password or the name were not valid, look to the validality functions.
+  String error_message = '';
+
+// Clean up the controller when the widget is disposed.
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController1.dispose();
-    myController2.dispose();
+    username_controller.dispose();
+    password_controller.dispose();
     super.dispose();
   }
 
@@ -27,6 +35,7 @@ class _SigninpageState extends State<Signinpage> {
     );
   }
 
+//function to build the App bar and display it
   AppBar build_SignIn_AppBar() {
     return AppBar(
       backgroundColor: Colors.redAccent[200],
@@ -42,6 +51,7 @@ class _SigninpageState extends State<Signinpage> {
     );
   }
 
+//function to build the body of the page and diplay it
   SingleChildScrollView build_SignInPage_Body(BuildContext context) {
     return SingleChildScrollView(
       child: Column(
@@ -65,7 +75,7 @@ class _SigninpageState extends State<Signinpage> {
           Container(
             margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: TextField(
-              controller: myController1,
+              controller: username_controller,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), hintText: 'username'),
             ),
@@ -76,7 +86,7 @@ class _SigninpageState extends State<Signinpage> {
           Container(
             margin: EdgeInsets.fromLTRB(40, 0, 40, 0),
             child: TextField(
-              controller: myController2,
+              controller: password_controller,
               obscureText: true,
               decoration: InputDecoration(
                   border: OutlineInputBorder(), hintText: 'password'),
@@ -88,23 +98,29 @@ class _SigninpageState extends State<Signinpage> {
           Container(
             width: 330,
             height: 60,
+            //signin button
             child: RaisedButton(
               onPressed: () {
                 //bot working*******
                 setState(() {
-                  if (myController1.text == '1234' &&
-                      myController2.text == '1234') {
-                    p = '';
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Shoppage()));
-                  } else if (myController1.text.isEmpty ||
-                      myController2.text.isEmpty) {
-                    p = 'please complete all the fields';
+                  if (CheckNameAndPassAreEmpty()) {
+                    error_message = 'please complete all the fields';
                   } else {
-                    p = 'Wrong username or password!';
+                    customer = new Customer(
+                        username_controller.text, password_controller.text);
+                    if (customer.CheckValid()) {
+                      error_message = '';
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  Shoppage(customer: customer)));
+                    }
                   }
                 });
               },
+
+              //sign in button
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)),
               child: Text(
@@ -117,11 +133,14 @@ class _SigninpageState extends State<Signinpage> {
               ),
             ),
           ),
+          //invisable box
           SizedBox(
             height: 10,
           ),
+
+          //displayed in case the username or password were not valid
           Text(
-            p,
+            error_message,
             style: TextStyle(
               color: Colors.redAccent[200],
               fontSize: 12,
@@ -130,5 +149,13 @@ class _SigninpageState extends State<Signinpage> {
         ],
       ),
     );
+  }
+
+//check if the name and password filds are left empty or not
+  bool CheckNameAndPassAreEmpty() {
+    if (username_controller.text.isEmpty || password_controller.text.isEmpty) {
+      return true;
+    }
+    return false;
   }
 }

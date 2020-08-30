@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:software2_project/product.dart';
 
 class ItemScreen extends StatelessWidget {
-  final Product p;
-  final Function onpress;
-  const ItemScreen({Key key, this.p, this.onpress}) : super(key: key);
+  final Product itemscreen_product;
+  final Function itemscreen_onpress;
+  const ItemScreen({Key key, this.itemscreen_product, this.itemscreen_onpress})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onpress,
+      onTap: itemscreen_onpress,
       child: Column(
         children: <Widget>[
           Container(
@@ -16,11 +17,12 @@ class ItemScreen extends StatelessWidget {
             height: 180,
             width: 160,
             decoration: BoxDecoration(
-                color: p.color, borderRadius: BorderRadius.circular(15)),
-            child: Image.asset(p.image),
+                color: itemscreen_product.color,
+                borderRadius: BorderRadius.circular(15)),
+            child: Image.asset(itemscreen_product.image),
           ),
           Text(
-            p.title,
+            itemscreen_product.title,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.redAccent[200],
@@ -28,7 +30,7 @@ class ItemScreen extends StatelessWidget {
             ),
           ),
           Text(
-            "\$" + p.price.toString(),
+            "\$" + itemscreen_product.price.toString(),
             style: TextStyle(
               fontWeight: FontWeight.bold,
               color: Colors.redAccent[200],
