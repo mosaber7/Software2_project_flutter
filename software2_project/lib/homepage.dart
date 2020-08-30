@@ -13,6 +13,7 @@ class Homepage extends StatelessWidget {
 
   AppBar build_homePage_AppBar() {
     return AppBar(
+      automaticallyImplyLeading: false,
       backgroundColor: Colors.redAccent[200],
       title: Text(
         'WELECOME TO BUY KHANA!',

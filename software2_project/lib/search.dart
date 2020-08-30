@@ -31,7 +31,6 @@ class Search extends SearchDelegate {
     );
   }
 
-  List<Product> search_list = [];
   final List<Product> list;
   List<Product> recentList = [products[0], products[1]];
   @override

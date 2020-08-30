@@ -34,6 +34,44 @@ class _ShoppageState extends State<Shoppage> {
         body: build_ShopPage_Body());
   }
 
+  AppBar build_ShopPage_AppBar(BuildContext context, Customer customer) {
+    return AppBar(
+      automaticallyImplyLeading: false,
+      actions: <Widget>[
+        //cart button
+        IconButton(
+            icon: Icon(Icons.shopping_cart),
+            onPressed: () {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => Cartpage(customer)));
+            }),
+        //searching button
+        IconButton(
+            icon: Icon(Icons.search),
+            onPressed: () {
+              showSearch(context: context, delegate: Search(products));
+            }),
+        //Home Icon Button
+        IconButton(
+            icon: Icon(Icons.home),
+            onPressed: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Homepage()));
+            })
+      ],
+      backgroundColor: Colors.redAccent[200],
+      title: Text(
+        'Shoping',
+        style: TextStyle(
+          fontWeight: FontWeight.bold,
+          color: Colors.grey[50],
+          fontSize: 20,
+        ),
+      ),
+      centerTitle: true,
+    );
+  }
+
   Column build_ShopPage_Body() {
     return Column(
       children: [
@@ -58,40 +96,4 @@ class _ShoppageState extends State<Shoppage> {
       ],
     );
   }
-}
-
-AppBar build_ShopPage_AppBar(BuildContext context, Customer customer) {
-  return AppBar(
-    automaticallyImplyLeading: false,
-    actions: <Widget>[
-      //cart button
-      IconButton(
-          icon: Icon(Icons.shopping_cart),
-          onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => Cartpage(customer)));
-          }),
-      //searching button
-      IconButton(
-          icon: Icon(Icons.search),
-          onPressed: () {
-            showSearch(context: context, delegate: Search(products));
-          }),
-      IconButton(
-          icon: Icon(Icons.home),
-          onPressed: () {
-            Homepage();
-          })
-    ],
-    backgroundColor: Colors.redAccent[200],
-    title: Text(
-      'Shoping',
-      style: TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Colors.grey[50],
-        fontSize: 20,
-      ),
-    ),
-    centerTitle: true,
-  );
 }
