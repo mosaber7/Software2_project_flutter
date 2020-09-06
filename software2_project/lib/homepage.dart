@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:software2_project/shoppage.dart';
 import 'package:software2_project/signinpage.dart';
 import 'package:software2_project/singuppage.dart';
+import 'package:software2_project/visitor.dart';
 
 class Homepage extends StatelessWidget {
   @override
@@ -69,7 +71,7 @@ class Homepage extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 50,
+            height: 30,
           ),
 
           //its like the container widget but for buttons
@@ -86,6 +88,30 @@ class Homepage extends StatelessWidget {
               color: Colors.redAccent[200],
               child: Text(
                 'SIGN UP',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey[50],
+                  fontSize: 20,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 30,
+          ),
+          ButtonTheme(
+            minWidth: 300.0,
+            height: 60.0,
+            child: RaisedButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Visitor()));
+              },
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadiusDirectional.circular(10)),
+              color: Colors.redAccent[200],
+              child: Text(
+                'SIGN IN AS A VISITOR',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   color: Colors.grey[50],

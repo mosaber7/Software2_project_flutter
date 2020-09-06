@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:software2_project/ItemScreen.dart';
+import 'package:software2_project/bill.dart';
 import 'package:software2_project/customer.dart';
 import 'package:software2_project/product.dart';
 import 'package:software2_project/shoppage.dart';
@@ -78,6 +79,11 @@ class _Build_CartPage_bodyState extends State<Build_CartPage_body> {
             onPressed: () {
               //bot working*******
               setState(() {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            Bill(widget.customer.products_List)));
                 widget.customer.products_List.clear();
               });
             },
